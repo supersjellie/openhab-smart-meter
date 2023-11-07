@@ -1,0 +1,119 @@
+UID: http:url:smart_meter
+label: Smart Meter
+thingTypeUID: http:url
+configuration:
+  authMode: BASIC
+  ignoreSSLErrors: false
+  baseURL: http://localhost:3001/energy
+  delay: 0
+  stateMethod: GET
+  refresh: 10
+  commandMethod: GET
+  timeout: 3000
+  bufferSize: 2048
+channels:
+  - id: netto_totaal
+    channelTypeUID: http:number
+    label: netto totaal
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.netto.totaal
+  - id: netto_L1
+    channelTypeUID: http:number
+    label: netto L1
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.netto.L1
+  - id: netto_L2
+    channelTypeUID: http:number
+    label: netto L2
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.netto.L2
+  - id: netto_L3
+    channelTypeUID: http:number
+    label: netto L3
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.netto.L3
+  - id: delta_netto_totaal
+    channelTypeUID: http:number
+    label: delta netto totaal
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.delta.netto.totaal
+  - id: delta_netto_L1
+    channelTypeUID: http:number
+    label: delta_netto_L1
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.delta.netto.L1
+  - id: delta_netto_L2
+    channelTypeUID: http:number
+    label: delta netto L2
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.delta.netto.L2
+  - id: delta_netto_L3
+    channelTypeUID: http:number
+    label: delta netto L3
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.delta.netto.L3
+  - id: factor
+    channelTypeUID: http:number
+    label: factor
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.factor
+  - id: stand_verbruik
+    channelTypeUID: http:number
+    label: stand_verbruik
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.sum($.stand.verbruikLaag,$.stand.verbruikHoog)
+  - id: stand_levering
+    channelTypeUID: http:number
+    label: stand_levering
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.sum($.stand.leveringLaag,$.stand.leveringHoog)
+  - id: stand_verbruik_laag
+    channelTypeUID: http:number
+    label: stand_verbruik_laag
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.stand.verbruikLaag
+  - id: stand_levering_laag
+    channelTypeUID: http:number
+    label: stand_levering_laag
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.stand.leveringLaag
+  - id: stand_verbruik_hoog
+    channelTypeUID: http:number
+    label: stand_verbruik_hoog
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.stand.verbruikHoog
+  - id: stand_levering_hoog
+    channelTypeUID: http:number
+    label: stand_levering_hoog
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.stand.leveringHoog
