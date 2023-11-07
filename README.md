@@ -22,6 +22,8 @@ Using the [issues](https://github.com/Supersjellie/smart_meter/issues) in github
 4. Install in openhab the http binding, see [documentation](https://www.openhab.org/addons/bindings/http/)
 6. Install in openhab the jsonpath transformation, see [documentation](https://www.openhab.org/addons/transformations/jsonpath/)
 7. Install in openHAB the javascript scriping engine, see [documentation](https://www.openhab.org/addons/automation/jsscripting/)
+8. Install [nodeJS](https://nodejs.org/en) on your raspberry.
+(more information, check my dutch [homepage](https://www.netsjel.nl/slimme-meter-1.html). English? Google Translate will be your friend :grin:
 
 ## Create thing
 1. Create a new thing
