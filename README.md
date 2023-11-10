@@ -1,7 +1,9 @@
 # smart_meter (P1 interface)
 
 ## Summary
-NodeJS script for a (dutch) smart meter with P1 connection. It read's the telegrams over the P1 serial (USB cable connection) and makes the results available over a JSON webservices. It contains both raw actual values, history and derived values like sums and delta's. Optionally you can activate an integration with envoy/enlighten solar panels. Optional you could use the included openHAB configuration.
+NodeJS script for a (dutch) smart meter with P1 connection. It read's the telegrams over the P1 serial (USB cable connection) and makes the results available over a JSON webservices. It contains both raw actual values, history and derived values like sums and delta's. Optionally you can activate an integration with envoy/enlighten solar panels. If needed the included openHAB configuration and widget can be used.
+
+![example 1](images-wiki/smart_meter_widget.png?raw=true)
 
 Features
 1. http://hostname/energy 
