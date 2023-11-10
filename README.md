@@ -42,7 +42,16 @@ More information, check my dutch [homepage](https://www.netsjel.nl/slimme-meter-
 5. Openhab will create/add equipment and items
 
 ## Widget installation
-1. TODO (but you can use one of the standard openHAB widgets)
+1. Add a new widget
+2. Remove default code
+3. Copy and past the yaml in the widget code of this project and save
+
+It's quite basic and under construction. But can be a startingpoint for your own development.
+
+## Widget usage/configuration
+1. Add a new widget to your dashboard/page
+2. Select round_meter from the custom widgets
+3. Set the props (minimal is the item) and save
 
 ## Versions
 * V1.2 - Cleaned code. Made enphase setup optional

@@ -1,0 +1,194 @@
+uid: round_meter
+tags: []
+props:
+  parameters:
+    - context: item
+      description: The current value
+      label: Item
+      name: item
+      required: true
+      type: TEXT
+    - context: number
+      default: "8"
+      description: Ticks on scale
+      label: Ticks
+      name: ticks
+      required: false
+      type: TEXT
+    - context: number
+      default: "-1000"
+      description: Low normal range
+      label: Low
+      name: low
+      required: false
+      type: TEXT
+    - context: number
+      default: "1000"
+      description: High normal range
+      label: High
+      name: high
+      required: false
+      type: TEXT
+    - context: number
+      default: "-4000"
+      description: The min value
+      label: Min
+      name: min
+      required: false
+      type: TEXT
+    - context: number
+      default: "4000"
+      description: The max value
+      label: Max
+      name: max
+      required: false
+      type: TEXT
+    - context: string
+      default: Energy
+      description: The name/title
+      label: Name
+      name: name
+      required: false
+      type: TEXT
+    - context: string
+      default: Watt
+      description: unit
+      label: Unit
+      name: unit
+      required: false
+      type: TEXT
+    - context: number
+      description: The height of widget
+      label: Height
+      name: height
+      required: false
+      type: TEXT
+    - context: number
+      description: Invert red/green
+      label: Invert
+      name: invert
+      required: false
+      type: TEXT
+  parameterGroups: []
+timestamp: Nov 10, 2023, 3:17:01 PM
+component: oh-chart
+config:
+  height: =props.height
+slots:
+  series:
+    - component: oh-data-series
+      config:
+        anchor:
+          itemStyle:
+            color: "#000"
+          show: true
+          size: 20
+        axisLabel:
+          show: false
+        axisLine:
+          lineStyle:
+            color:
+              - - 1
+                - "#333"
+            shadowBlur: 10
+            shadowColor: rgba(0, 0, 0, 0.5)
+            width: 10
+        axisTick:
+          show: false
+        endAngle: -270
+        pointer:
+          show: false
+        radius: 92%
+        splitLine:
+          show: false
+        startAngle: 90
+        title:
+          show: false
+        type: gauge
+    - component: oh-data-series
+      config:
+        axisLabel:
+          show: false
+        axisLine:
+          show: false
+        axisTick:
+          show: false
+        data:
+          - name: =props.name
+            value: =Number.parseFloat(items[props.target].state)
+        detail:
+          show: false
+        max: =props.max || 100
+        min: =props.min || 0
+        pointer:
+          length: 80%
+          show: =items[props.target].state !== "-"
+        radius: 82%
+        splitLine:
+          show: false
+        splitNumber: = Number.parseInt(props.ticks) || 10
+        title:
+          offsetCenter:
+            - 0
+            - -35%
+        type: gauge
+    - component: oh-data-series
+      config:
+        anchor:
+          itemStyle:
+            borderColor: "#000"
+            borderWidth: 2
+          show: = true
+          size: 14
+        axisLabel:
+          distance: 18
+          fontSize: 12
+        axisLine:
+          lineStyle:
+            color:
+              - - =Number.parseFloat(props.low - props.min)/(props.max - props.min)
+                - '= (!props.invert || props.invert==0 ) ? "rgb(50,200,50)" : "rgb(200,50,50)"'
+              - - =Number.parseFloat(props.high - props.min)/(props.max - props.min)
+                - rgb(100,100,200)
+              - - 1
+                - '= (!props.invert || props.invert==0 ) ? "rgb(200,50,50)" : "rgb(50,200,50)"'
+            width: 10
+        axisTick:
+          distance: -10
+          length: 10
+          lineStyle:
+            color: "#202020"
+        data:
+          - name: ""
+            value: = Number.parseInt(10.0*Number.parseFloat(items[props.item].state))/10
+        detail:
+          fontSize: 14
+          formatter: '= (!props.height || props.height>=100) ? "{value}" + "\n" + (props.unit || "") : "\n" + (props.unit || "")'
+          offsetCenter:
+            - 0
+            - 45%
+          show: =true
+          valueAnimation: true
+        max: =props.max || 100
+        min: =props.min || 0
+        pointer:
+          icon: path://M2090.36389,615.30999 L2090.36389,615.30999 C2091.48372,615.30999 2092.40383,616.194028 2092.44859,617.312956 L2096.90698,728.755929 C2097.05155,732.369577 2094.2393,735.416212 2090.62566,735.56078 C2090.53845,735.564269 2090.45117,735.566014 2090.36389,735.566014 L2090.36389,735.566014 C2086.74736,735.566014 2083.81557,732.63423 2083.81557,729.017692 C2083.81557,728.930412 2083.81732,728.84314 2083.82081,728.755929 L2088.2792,617.312956 C2088.32396,616.194028 2089.24407,615.30999 2090.36389,615.30999 Z
+          itemStyle:
+            color: "#f00"
+          length: 100%
+          offsetCenter:
+            - 0
+            - 10%
+        radius: 82%
+        splitLine:
+          distance: -10
+          length: 20
+          lineStyle:
+            color: = "auto"
+        splitNumber: =   Number.parseInt(props.ticks) || 10
+        title:
+          fontSize: 14
+          offsetCenter:
+            - 0
+            - -30%
+        type: gauge
