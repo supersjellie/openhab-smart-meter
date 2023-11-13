@@ -1,0 +1,160 @@
+UID: http:url:solar_panels
+label: Solar Panels
+thingTypeUID: http:url
+configuration:
+  authMode: BASIC
+  ignoreSSLErrors: false
+  baseURL: http://localhost:3001/production
+  delay: 0
+  stateMethod: GET
+  refresh: 300
+  commandMethod: GET
+  contentType: application/json
+  timeout: 3000
+  bufferSize: 2048
+location: dak
+channels:
+  - id: Productie
+    channelTypeUID: http:number
+    label: Productie
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.total.wattsNow
+      unit: W
+  - id: Paneel1
+    channelTypeUID: http:number
+    label: Paneel1
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.inverters[0].watt
+      unit: W
+  - id: Paneel2
+    channelTypeUID: http:number
+    label: Paneel2
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.inverters[1].watt
+      unit: W
+  - id: Paneel3
+    channelTypeUID: http:number
+    label: Paneel3
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.inverters[2].watt
+      unit: W
+  - id: Paneel4
+    channelTypeUID: http:number
+    label: Paneel4
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.inverters[3].watt
+      unit: W
+  - id: Paneel5
+    channelTypeUID: http:number
+    label: Paneel5
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.inverters[4].watt
+      unit: W
+  - id: Paneel6
+    channelTypeUID: http:number
+    label: Paneel6
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.inverters[5].watt
+      unit: W
+  - id: Paneel7
+    channelTypeUID: http:number
+    label: Paneel7
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.inverters[6].watt
+      unit: W
+  - id: Paneel8
+    channelTypeUID: http:number
+    label: Paneel8
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.inverters[7].watt
+      unit: W
+  - id: Paneel9
+    channelTypeUID: http:number
+    label: Paneel9
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.inverters[8].watt
+      unit: W
+  - id: Paneel10
+    channelTypeUID: http:number
+    label: Paneel10
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.inverters[9].watt
+      unit: W
+  - id: Paneel11
+    channelTypeUID: http:number
+    label: Paneel11
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.inverters[10].watt
+      unit: W
+  - id: Paneel12
+    channelTypeUID: http:number
+    label: Paneel12
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.inverters[11].watt
+      unit: W
+  - id: Paneel13
+    channelTypeUID: http:number
+    label: Paneel13
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.inverters[12].watt
+      unit: W
+  - id: Paneel14
+    channelTypeUID: http:number
+    label: Paneel14
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.inverters[13].watt
+      unit: W
+  - id: Paneel15
+    channelTypeUID: http:number
+    label: Paneel15
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.inverters[14].watt
+      unit: W
+  - id: Paneel16
+    channelTypeUID: http:number
+    label: Paneel16
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.inverters[15].watt
+      unit: W
+  - id: Paneel17
+    channelTypeUID: http:number
+    label: Paneel17
+    description: null
+    configuration:
+      mode: READONLY
+      stateTransformation: JSONPATH:$.inverters[16].watt
+      unit: W

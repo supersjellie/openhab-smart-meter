@@ -1,4 +1,4 @@
-uid: round_meter
+uid: widget_half_ronde_meter
 tags: []
 props:
   parameters:
@@ -8,35 +8,29 @@ props:
       name: item
       required: true
       type: TEXT
-    - context: item
-      description: Second value (for avg, max, target)
-      label: 2nd Item
-      name: item2
-      required: false
-      type: TEXT
     - context: number
-      default: "8"
+      default: "4"
       description: Ticks on scale
       label: Ticks
       name: ticks
       required: false
       type: TEXT
     - context: number
-      default: "-1000"
+      default: "500"
       description: Low normal range
       label: Low
       name: low
       required: false
       type: TEXT
     - context: number
-      default: "1000"
+      default: "1500"
       description: High normal range
       label: High
       name: high
       required: false
       type: TEXT
     - context: number
-      default: "-4000"
+      default: "0"
       description: The min value
       label: Min
       name: min
@@ -76,10 +70,11 @@ props:
       required: false
       type: TEXT
   parameterGroups: []
-timestamp: Nov 10, 2023, 3:17:01 PM
+timestamp: Nov 13, 2023, 3:49:33 PM
 component: oh-chart
 config:
-  height: =props.height
+  height: 180%
+  width: =auto
 slots:
   series:
     - component: oh-data-series
@@ -101,76 +96,60 @@ slots:
             width: 10
         axisTick:
           show: false
-        endAngle: -270
+        center:
+          - 50%
+          - 50%
+        endAngle: 0
         pointer:
           show: false
         radius: 92%
         splitLine:
           show: false
-        startAngle: 90
+        startAngle: 180
         title:
           show: false
-        type: gauge      
-    - component: oh-data-series
-      config:
-        axisLabel:
-          show: false
-        axisLine:
-          show: false
-        axisTick:
-          show: false
-        data:
-            - value: =Number.parseFloat(items[props.item2].state)
-        detail:
-          show: false
-        max: =props.max || 100
-        min: =props.min || 0
-        pointer:
-          length: 75%
-          show: =props.item2
-        radius: 82%
-        splitLine:
-          show: false
-        splitNumber: = Number.parseInt(props.ticks) || 10
-        type: gauge        
+        type: gauge
     - component: oh-data-series
       config:
         anchor:
           itemStyle:
             borderColor: "#000"
             borderWidth: 2
-          show: = true
+          show: true
           size: 14
         axisLabel:
-          distance: "= !props.height || props.height>100 ? 18 : 18-(100-props.height)/10"
-          fontSize: "= !props.height || props.height>100 ? 12 : 12-(100-props.height)/25"
+          distance: 18
+          fontSize: 12
         axisLine:
           lineStyle:
             color:
               - - =Number.parseFloat(props.low - props.min)/(props.max - props.min)
-                - '= (!props.invert || props.invert==0 ) ? "rgb(50,200,50)" : "rgb(200,50,50)"'
+                - rgb(200,50,50)
               - - =Number.parseFloat(props.high - props.min)/(props.max - props.min)
                 - rgb(100,100,200)
               - - 1
-                - '= (!props.invert || props.invert==0 ) ? "rgb(200,50,50)" : "rgb(50,200,50)"'
+                - rgb(50,200,50)
             width: 10
         axisTick:
           distance: -10
           length: 10
           lineStyle:
             color: "#202020"
+        center:
+          - 50%
+          - 50%
         data:
           - name: =props.name
-            value: = Number.parseInt(10.0*Number.parseFloat(items[props.item].state))/10
+            value: =Number.parseFloat(items[props.item].state)
         detail:
-          fontSize: "= !props.height || props.height>100 ? 12 : 12-(100-props.height)/25"
+          fontSize: 12
           fontWeight: normal
           formatter: ="{value}" +  (" " +props.unit || "")
           offsetCenter:
             - 0
-            - 30%
-          show: =props.unit!='-'
+            - -30%
           valueAnimation: true
+        endAngle: 0
         max: =props.max || 100
         min: =props.min || 0
         pointer:
@@ -188,9 +167,10 @@ slots:
           lineStyle:
             color: = "auto"
         splitNumber: =   Number.parseInt(props.ticks) || 10
+        startAngle: 180
         title:
-          fontSize: "= !props.height || props.height>100 ? 14 : 14-(100-props.height)/25"
+          fontSize: 14
           offsetCenter:
             - 0
-            - "-25%" 
+            - -45%
         type: gauge
