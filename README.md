@@ -13,20 +13,28 @@ Features
 3. http://hostname/production 
 	* (optional when activated) production of envoy/enlighten solar panel system with totals and seperate inverter/panel data
 ## Worklist
-Using the [releases](https://github.com/Supersjellie/smart_meter/releases) in github now
-Using the [issues](https://github.com/Supersjellie/smart_meter/issues) in github now
+Using the [releases](https://github.com/Supersjellie/openhab-smart-meter/releases) in github now
+Using the [issues](https://github.com/Supersjellie/openhab-smart-meter/issues) in github now
 (I'm not using branches for work in progress (i.e. latest milestone), so download a release for a stable version)
 
 ## Preperation
 1. Have an openhab installation :grin:
 2. Own a smart meter with P1 port and USB-cable to connect :grin:
-3. Adapt configuration to your needs (top of NodeJS code). Important either use ENPHASE=false OR put in your password!
+3. Install [nodeJS](https://nodejs.org/en) on your raspberry.
 4. Install in openhab the http binding, see [documentation](https://www.openhab.org/addons/bindings/http/)
-6. Install in openhab the jsonpath transformation, see [documentation](https://www.openhab.org/addons/transformations/jsonpath/)
-7. Install in openHAB the javascript scriping engine, see [documentation](https://www.openhab.org/addons/automation/jsscripting/)
-8. Install [nodeJS](https://nodejs.org/en) on your raspberry.
+5. Install in openhab the jsonpath transformation, see [documentation](https://www.openhab.org/addons/transformations/jsonpath/)
+6. Install in openHAB the javascript scriping engine, see [documentation](https://www.openhab.org/addons/automation/jsscripting/)
 
-More information, check my dutch [homepage](https://www.netsjel.nl/slimme-meter-1.html). English? Google Translate will be your friend.
+check my dutch [homepage](https://www.netsjel.nl/slimme-meter-1.html). English? [Google Translate](https://www-netsjel-nl.translate.goog/slimme-meter-1.html?_x_tr_sl=nl&_x_tr_tl=en&_x_tr_hl=nl&_x_tr_pto=wapp) will be your friend.
+
+## Deploy nodeJS progam
+1. Assuming you're familair with nodeJS. Copy the energie.js program to your program folder.
+2. Change the configurion (top of code) to your need.
+3. ENPHASE will enable/diable the enphase solar integration. Important either use ENPHASE=false OR put in your password.
+4. PORT is the portnumber the service will use.
+5. Add it to PM2 programs to run and restart at startup (PM2 start energie.js)
+7. If you're new to nodeJS. Check the link in preparation to install it. Also install PM2 and check how it is used. A brief summary can also be found on my [website](https://www.netsjel.nl/slimme-meter-1.html). English? [Google Translation](https://www-netsjel-nl.translate.goog/slimme-meter-1.html?_x_tr_sl=nl&_x_tr_tl=en&_x_tr_hl=nl&_x_tr_pto=wapp)
+8. If succesfull http://hostname:3001/energy will show a JSON string.
 
 ## Create thing
 1. Create a new thing
